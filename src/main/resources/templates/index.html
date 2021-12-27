@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+
+<header>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+		crossorigin="anonymous">
+
+
+	<title>Tinder de mascotas</title>
+</header>
+<!-- navbar -->
+<body>
+	<section>
+		<nav class="navbar navbar-light bg-danger">
+			<div class="container-fluid">
+				<a th:href="@{/index}" class="navbar-brand mb-2 h1 text-white">TinderDog</a>
+				<img
+					src="https://www.miperroyyo.com.ar/wp-content/uploads/2018/01/logotipo-miperroyyo-trans.png"
+					alt="WM" width="100" height="60" />
+				<!-- class="d-inline-block align-text-top" -->
+				<div class="d-flex flex-row-reverse">
+					<a th:href="@{/login}" class="navbar-brand mb-2 h1 text-white" sec:authorize="!isAuthenticated()">Iniciar
+						Sesión</a> <a th:href="@{/registro}"
+						class="navbar-brand mb-2 h1 text-white" sec:authorize="!isAuthenticated()">Registrarse</a>
+						<a th:href="@{/logout}" class="navbar-brand mb-2 h1 text-white" sec:authorize="isAuthenticated()">Salir</a>
+						<a
+						th:href="@{/nosotros}" class="navbar-brand mb-2 h1 text-white">Nosotros</a>
+					 	 <a th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}" sec:authorize="isAuthenticated()"class="navbar-brand mb-2 h1 text-white">Perfil</a>
+					 	 <a th:href="@{/mascota/mis-mascotas}" sec:authorize="isAuthenticated()"class="navbar-brand mb-2 h1 text-white">Agregar mascota</a>
+				</div>
+			</div>
+		</nav>
+
+	<section>
+	<div class="alert alert-success d-flex align-items-center" role="alert" sec:authorize="isAuthenticated()">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+  <div>
+    <h2>Usuario logeado:</h2>
+    	<h2 th:if="${session.usuariosession != null}" th:text="${session.usuariosession.nombre +' '+ session.usuariosession.apellido}"></h2> <!--(session es de thymeleaft)  usuariosession guarda el usuario, muestra nombre y apellido-->
+  </div>
+  <button   type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+	</section>
+	
+	
+		<div id="carouselExampleCaptions" class="carousel slide"
+			data-bs-ride="carousel">
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#carouselExampleCaptions"
+					data-bs-slide-to="0" class="active" aria-current="true"
+					aria-label="Slide 1"></button>
+				<button type="button" data-bs-target="#carouselExampleCaptions"
+					data-bs-slide-to="1" aria-label="Slide 2"></button>
+				<button type="button" data-bs-target="#carouselExampleCaptions"
+					data-bs-slide-to="2" aria-label="Slide 3"></button>
+			</div>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img
+						src="https://www.hogarmania.com/img/mascotas/mascotas-listados.jpg"
+						class="d-block w-100 " alt="imagen">
+					<div class="carousel-caption d-none d-md-block">
+						<h2 class="text-black">Bienvenido a TinderDog</h2>
+						<h6 class="text-black">Momentos únicos y divertidos en este
+							lugar</h6>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img
+						src="https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/04/26112831/mascotas-1920-7.jpg"
+						class="d-block w-100" alt="...">
+					<div class="carousel-caption d-none d-md-block">
+						<h2>Mascotitas de raza y callejeras</h2>
+						<h6>Podrás encontrar todo lo que quieras!</h6>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img
+						src="https://i.pinimg.com/originals/d5/d4/82/d5d48229c263a68436bf07460589bb5b.jpg"
+						class="d-block w-100" alt="...">
+					<div class="carousel-caption d-none d-md-block">
+						<h2>Cachorritos</h2>
+						<h6>Primeros cachorros de TinderDog!</h6>
+					</div>
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button"
+				data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button"
+				data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+	</section>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+		crossorigin="anonymous"></script>
+
+	<footer class="text-center text-white"
+		style="background-color: #f1f1f1;">
+
+		<div class="text-center text-dark p-3"
+			style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2021 Copyright: <a class="text-dark"
+				href="https://www.instagram.com/ezeroldan24/?hl=es">Ezequiel
+				Roldán</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+</body>
+
+</html>

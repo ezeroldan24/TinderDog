@@ -1,0 +1,43 @@
+spring:
+  mail:
+    default-encoding: UTF-8
+    host: ezeroldan241@outlook.es
+    username: ezequiel
+    password: secret
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
+    test-connection: false
+  datasource: 
+    url: jdbc:mysql://localhost:3306/ProyectoTinder?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
+    username: root
+    password: root
+   
+    driver-class-name: com.mysql.cj.jdbc.Driver 
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect      
+  thymeleaf:
+    cache: false 
+server:
+  port: 2020
+  error:
+    whitelabel:
+      enabled: false
+  servlet:
+    session:
+      cookie:
+        http-only: true
+      tracking-modes:
+      - cookie
+    
+

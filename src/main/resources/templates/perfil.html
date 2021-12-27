@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+
+<header>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+		crossorigin="anonymous">
+	<link rel="stylesheet" href="../css/registro.css">
+
+	<title>Tinder de mascotas</title>
+</header>
+<!-- navbar -->
+<body>
+	<section>
+			<nav class="navbar navbar-light bg-danger">
+			<div class="container-fluid">
+				<a th:href="@{/index}" class="navbar-brand mb-2 h1 text-white">TinderDog</a>
+				<img
+					src="https://www.miperroyyo.com.ar/wp-content/uploads/2018/01/logotipo-miperroyyo-trans.png"
+					alt="WM" width="100" height="60" />
+				<!-- class="d-inline-block align-text-top" -->
+				<div class="d-flex flex-row-reverse">
+				
+						<a th:href="@{/logout}" class="navbar-brand mb-2 h1 text-white" sec:authorize="isAuthenticated()">Salir</a>
+						<a
+						th:href="@{/nosotros}" class="navbar-brand mb-2 h1 text-white">Nosotros</a>
+					 
+				</div>
+			</div>
+		</nav>
+	</section>
+
+
+<section class="vh-100 gradient-custom">
+		<div class="container py-4 h-100">
+			<div class="row justify-content-center align-items-center h-100">
+				<div class="col-12 col-lg-9 col-xl-7">
+					<div class="card shadow-2-strong card-registration"
+						style="border-radius: 15px;">
+						<div class="card-body p-4 p-md-5">
+							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Editar perfil</h3>
+	
+	<form action="/usuario/actualizar-perfil" method="POST" enctype="multipart/form-data"> <!--accion que actualiza el perfil -->
+			<!--MENSAJE DE ERROR  -->
+			<p  class="alert alert-danger"  th:if="${error !=null}" th:text="${error}"></p>
+			
+		<div class="row">
+				<div class="col-md-12 mb-4">
+					<div class="form-outline">
+
+					<!--  -->	
+					<img th:if="${perfil.foto != null}" class="img-fluid rounded-cicle" th:src="${'/foto/usuario/' + perfil.id}" alt="Esto es una imagen"><!-- Si el perfil tiene una foto se muestra -->
+					<img th:if="${perfil.foto == null}" class="img-fluid rounded-cicle" src="data:image/jpeg;base64,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"><!-- Si el perfil tiene una foto se muestra -->
+					
+					<input hidden  name="id"   th:value="${perfil.id}" />
+					<label class="form-label fw-bold d-block" >Nombre:</label> 
+					<input type="text" name="nombre"  class="form-control form-control-lg" placeholder="Nombre.." th:value="${perfil.nombre}"  /> 
+					<!--  -->						
+
+					<label class="form-label fw-bold">Apellido:</label> 
+					<input name="apellido" type="text"  class="form-control form-control-lg" placeholder="Apellido.." th:value="${perfil.apellido}" />
+					<!--  -->
+
+					<label class="form-label fw-bold">Correo electronico:</label> 
+					<input type="text"  class="form-control form-control-lg" placeholder="aston@hotmail.lpa" name="mail" th:value="${perfil.mail}" />
+					<!--  -->	
+					<label class="form-label fw-bold" >Foto:</label> 
+					<input type="file"  class="form-control form-control-lg"  name="archivo" />
+					<!--  -->					
+					<label class="form-label fw-bold" >Zona:</label><br> 
+					<select name="idZona" class="form-label fw-bold">
+					<option th:each="zona : ${zonas}" th:value=${zona.id} th:text="${zona.nombre}" th:selected="${perfil.zona != null && zona.id == perfil.zona.id}" ></option> <!-- ITERAMOS LA ZONAS PARA QUE APAREZCAN-->		
+					</select> <br>
+					<!--  -->					
+					<label class="form-label fw-bold" >Clave:</label> 
+					<input type="password" id="password" class="form-control form-control-lg" placeholder="Contraseña.." name="clave" th:value="${clave}" />
+				<!--  -->
+				<label class="form-label fw-bold" >Clave:</label> 
+					<input type="password" id="password" class="form-control form-control-lg" placeholder="Contraseña.." name="clave2" th:value="${clave2}" />
+					
+					<br>
+					
+					<button type="submit" class="btn btn-primary">Actualizar perfil</button>
+							</form>
+						</div>
+					</div>
+						</div>
+					</div>
+					</div>
+					
+				
+	</section>
+	
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+		crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+
+<header>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+		crossorigin="anonymous">
+	<link rel="stylesheet" href="../css/registro.css">
+
+	<title>Tinder de mascotas</title>
+</header>
+<!-- navbar -->
+<body>
+	<section>
+		<nav class="navbar navbar-light bg-danger">
+			<div class="container-fluid">
+				<a th:href="@{/index}" class="navbar-brand mb-2 h1 text-white">TinderDog</a>
+				<img
+					src="https://www.miperroyyo.com.ar/wp-content/uploads/2018/01/logotipo-miperroyyo-trans.png"
+					alt="WM" width="100" height="60" />
+				<!-- class="d-inline-block align-text-top" -->
+				<div class="d-flex flex-row-reverse">
+					<a th:href="@{/login}" class="navbar-brand mb-2 h1 text-white">Iniciar
+						Sesión</a> <a th:href="@{/nosotros}"
+						class="navbar-brand mb-2 h1 text-white">Nosotros</a>
+				</div>
+			</div>
+		</nav>
+	</section>
+
+
+	<section class="vh-100 gradient-custom">
+		<div class="container py-4 h-100">
+			<div class="row justify-content-center align-items-center h-100">
+				<div class="col-12 col-lg-9 col-xl-7">
+					<div class="card shadow-2-strong card-registration"
+						style="border-radius: 15px;">
+						<div class="card-body p-4 p-md-5">
+							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registro</h3>
+	
+	<form action="/registrar" method="POST" enctype="multipart/form-data"> <!-- enctype es para el archivo de la foto -->
+			<!--MENSAJE DE ERROR  -->
+			<p  class="alert alert-danger"  th:if="${error !=null}" th:text="${error}"></p>
+			
+			<div class="row">
+				<div class="col-md-12 mb-4">
+
+					<div class="form-outline">
+					
+					<label class="form-label fw-bold" >Nombre:</label> 
+					<input type="text" name="nombre" id="firstName" class="form-control form-control-lg" placeholder="Nombre.." th:value="${nombre}"  />
+					<!--  -->						
+
+					<label class="form-label fw-bold">Apellido:</label> 
+					<input name="apellido" type="text" id="lastName" class="form-control form-control-lg" placeholder="Apellido.." th:value="${apellido}" />
+					<!--  -->
+
+					<label class="form-label fw-bold">Correo electronico:</label> 
+					<input type="text" id="mail" class="form-control form-control-lg" placeholder="aston@hotmail.lpa" name="mail" th:value="${mail}" />
+					<!--  -->	
+					<label class="form-label fw-bold" >Foto:</label> 
+					<input type="file"  class="form-control form-control-lg"  name="archivo" id="foto"/>
+					<!--  -->					
+					<label class="form-label fw-bold" >Zona:</label><br> 
+					<select name="idZona" class="form-label fw-bold">
+					<option th:each="zona : ${zonas}" th:value=${zona.id} th:text="${zona.nombre}"></option> <!-- ITERAMOS LA ZONAS PARA QUE APAREZCAN-->		
+					</select> <br>
+					<!--  -->					
+					<label class="form-label fw-bold" >Clave:</label> 
+					<input type="password" id="password" class="form-control form-control-lg" placeholder="Contraseña.." name="clave1" th:value="${clave1}" />
+					<!--  -->							
+					<label class="form-label fw-bold" >Repetir Clave:</label> 
+					<input type="password" id="password" class="form-control form-control-lg" placeholder="Contraseña.." name="clave2" th:value="${clave2}" />
+					
+					<br>
+					
+					<button type="submit" class="btn btn-primary">Registrarme</button>
+							</form>
+						</div>
+					</div>
+
+						</div>
+					</div>
+				</div>
+				
+	</section>
+	<footer class="text-center text-white"
+		style="background-color: #f1f1f1;">
+
+		<div class="text-center text-dark p-3"
+			style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2021 Copyright: <a class="text-dark"
+				href="https://www.instagram.com/ezeroldan24/?hl=es">Ezequiel
+				Roldán</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+
+
+
+
+
+
+
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+		crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

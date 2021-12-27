@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+
+<header>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+		crossorigin="anonymous">
+
+
+	<title>Tinder de mascotas</title>
+</header>
+<!-- navbar -->
+<body>
+	<section>
+		<nav class="navbar navbar-light bg-danger">
+			<div class="container-fluid">
+				<a th:href="@{/index}" class="navbar-brand mb-2 h1 text-white">TinderDog</a>
+				<img
+					src="https://www.miperroyyo.com.ar/wp-content/uploads/2018/01/logotipo-miperroyyo-trans.png"
+					alt="WM" width="100" height="60" />
+				<!-- class="d-inline-block align-text-top" -->
+				<div class="d-flex flex-row-reverse">
+					<a th:href="@{/login}" class="navbar-brand mb-2 h1 text-white" sec:authorize="!isAuthenticated()">Iniciar
+						Sesión</a> <a th:href="@{/registro}" class="navbar-brand mb-2 h1 text-white" sec:authorize="!isAuthenticated()">Registrarse</a>
+						
+						<a th:href="@{/logout}" class="navbar-brand mb-2 h1 text-white" sec:authorize="isAuthenticated()">Salir</a>
+								 <a th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}" sec:authorize="isAuthenticated()"class="navbar-brand mb-2 h1 text-white">Perfil</a>
+
+				</div>
+			</div>
+		</nav>
+	</section>
+	
+	
+	<section>
+	 <div class="p-5 mb-4 bg-light rounded-3 ">
+      <div class="container-fluid py-5 ">
+        <h1 class="display-5 fw-bold">Bienvenido a TinderDog!</h1>
+        <p class="col-md-8 fs-4"> Nosotros te ayudaremos a buscar una pareja para tu mascota.</p>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h2>Ultimas parejas</h2>
+          <p>Isac y otras mascotas pudieron encontrar su pareja ideal.</p>
+          <button class="btn btn-outline-light" type="button">Leer mas..</button>
+       
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>Por que elegirnos:</h2>
+          <p>Somos una empresa Multinacional que se dedica a buscar..</p>
+          <button class="btn btn-outline-secondary" type="button">Leer mas..</button>
+        </div>
+      </div>
+    </div>
+	</section>
+	
+	
+	
+	<section> 
+ <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+                       <img src="https://www.tiendanimal.es/articulos/wp-content/uploads/2014/04/Trucos-para-evitar-que-mi-perro-orine-dentro-de-casa2-1200x900.jpg">
+
+            <div class="card-body">
+              <p class="card-text">Eduardo, primer perrito nacido por TinderDog</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                 
+                </div>
+                <small class="text-muted">20/02/2020</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="https://animalrevista.com/wp-content/uploads/2019/07/dog-baby-animal-revista.jpg">
+
+            <div class="card-body">
+              <p class="card-text">Nicolas, perrito que nacio gracias a Tinderdog</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  
+                </div>
+                <small class="text-muted">12/06/2020</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="https://images.ecestaticos.com/6uBjSmsBorRk6l_IHAxkBS1JCwE=/114x0:1997x1410/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F721%2F122%2F714%2F72112271431cb1078c3fe3e75ad5ab41.jpg">
+
+            <div class="card-body">
+              <p class="card-text">Elisa, perrita que encontro pareja gracias a Tinderdog</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  
+                </div>
+                <small class="text-muted">15/05/2021</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+	</section>
+
+
+
+
+
+<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+		crossorigin="anonymous"></script>
+
+	<footer class="text-center text-white"
+		style="background-color: #f1f1f1;">
+
+		<div class="text-center text-dark p-3"
+			style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2021 Copyright: <a class="text-dark"
+				href="https://www.instagram.com/ezeroldan24/?hl=es">Ezequiel
+				Roldán</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+</body>
+</html>
